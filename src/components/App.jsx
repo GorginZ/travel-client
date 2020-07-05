@@ -5,6 +5,7 @@ import NoMatch from './NoMatch'
 import Home from './Home'
 import NavBar from './NavBar'
 import CreateCountry from './CreateCountry'
+import EditCountry from './EditCountry'
 
 class App extends React.Component {
   render() {
@@ -15,6 +16,8 @@ class App extends React.Component {
         <Route path="/countries" component={Countries} />
         <Route exact path="/" component={Home} />
         <Route exact path="/createCountry" component={CreateCountry} />
+        <Route exact path="/countries/:id/edit" component={EditCountry} /> 
+        {/* thsi edit route not right */}
         <Route component={NoMatch} />
       </Switch>
       </>

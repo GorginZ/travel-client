@@ -13,11 +13,10 @@ class App extends React.Component {
       <>
       <NavBar />
       <Switch>
-        <Route path="/countries" component={Countries} />
-        <Route exact path="/" component={Home} />
-        <Route exact path="/createCountry" component={CreateCountry} />
         <Route exact path="/countries/:id/edit" component={EditCountry} /> 
-        {/* thsi edit route not right */}
+        <Route exact path="/countries/create" component={CreateCountry} />
+        <Route exact path="/countries" component={Countries} />
+        <Route exact path="/" component={Home} />
         <Route component={NoMatch} />
       </Switch>
       </>

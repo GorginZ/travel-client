@@ -10,19 +10,13 @@ class Countries extends React.Component {
     this.setState({ countries: countries })
   }
 
-  // renderCountries = () => {
-  //   return this.state.countries.map((country, index) => {
-  //     return (
-  //       <div key={index}>
-  //         <h3>{country.name}</h3>
-  //         <p>{country.description}</p>
-  //         <p><b>{country.airline}</b></p>
-  //         <p>{country.year}</p>
-  //         <hr/>
-  //       </div>
-  //     )
-  //   })
-  // }
+
+  deleteCountry = async (id) => {
+    await fetch(`http://localhost:3000/countries/${id}`, {
+      method: "DELETE"
+    })
+    this.getCountries()
+  }
 
   renderCountries = () => {
     return this.state.countries.map((country, index) => {
@@ -32,13 +26,17 @@ class Countries extends React.Component {
           <h4>Description: </h4><p>{country.description}</p>
           <h4>Airline: </h4><p>{country.airline}</p>
           <h4>Year: </h4><p>{country.year}</p>
+          <div className="edit-delete-container">
+            <Link to={`/countries/${country.id}/edit`}>Edit</Link>
+            <span onClick={() => this.deleteCountry(country.id)}>Delete</span>
+          </div>
           <hr />
         </div>
       );
     });
   };
 
-  componentDidMount() {
+  async componentDidMount() {
     this.getCountries()
   }
 

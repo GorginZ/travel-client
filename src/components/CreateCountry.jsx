@@ -13,16 +13,16 @@ onInputChange = (event) => {
 onFormSubmit = async (event) => {
 
   event.preventDefault()
-  const body = {
-    country: this.state
-}
+//   const body = {
+//     country: this.state
+// }
 
   await fetch("http://localhost:3000/countries", {
     method: "POST",
     headers: {
       'Content-Type': "application/json"
     },
-    body: JSON.stringify(body)
+    body: JSON.stringify(this.state)
   })
   this.props.history.push("/countries")
 }
